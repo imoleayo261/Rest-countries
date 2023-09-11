@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../assets/utils/Loading";
 import EachCountry from "../component/EachCountry";
 
-const CountryDetail = ({darkMode}) => {
+const CountryDetail = ({ darkMode }) => {
   const { countryName } = useParams();
   const [country, setCountry] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -18,14 +18,13 @@ const CountryDetail = ({darkMode}) => {
       setCountry(data[0]);
       setIsLoading(false);
     };
-    setTimeout(() => {
-      getData();
-    }, 3000);
-  }, []);
+
+    getData();
+  });
 
   return (
     <div>
-      {!isLoading && <EachCountry country={country}/>}
+      {!isLoading && <EachCountry country={country} />}
       {isLoading && <Loading darkMode={darkMode} />}
     </div>
   );
